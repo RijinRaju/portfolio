@@ -18,25 +18,213 @@ body {
   padding: 20px;
 }
 
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+  .container {
+      padding: 10px;
+  }
+
+  header {
+      flex-direction: column;
+      align-items: flex-start;
+  }
+
+  nav ul li a {
+      font-size: 14px;
+      padding: 5px;
+  }
+
+  main {
+      padding: 10px;
+  }
+
+  h1 {
+      font-size: 1.8em;
+  }
+
+  h2 {
+      font-size: 1.5em;
+  }
+
+  .skills-grid {
+      flex-direction: column;
+      align-items: stretch;
+  }
+
+  .tab {
+      width: 100%;
+      justify-content: center;
+      margin-bottom: 10px;
+  }
+
+  .contact-tabs {
+      flex-direction: column;
+  }
+}
+
+/* Extra small screens */
+@media (max-width: 480px) {
+  h1 {
+      font-size: 1.5em;
+  }
+
+  h2 {
+      font-size: 1.2em;
+  }
+
+  nav ul li a {
+      font-size: 12px;
+  }
+
+  .skill-item {
+      font-size: 0.9em;
+  }
+
+  .skills-grid {
+      gap: 5px;
+  }
+
+  .tab {
+      padding: 5px 10px;
+  }
+}
+
+
+
+/* General styles for header */
 header {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 20px;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #333;
+  color: #fff;
+  flex-wrap: wrap; /* Allow items to wrap on smaller screens */
 }
 
 nav ul {
-  list-style-type: none;
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 nav ul li {
-  display: inline;
+  margin: 0;
+  padding: 0;
 }
 
 nav ul li a {
-  color: #C7C7C7;
+  color: #fff;
   text-decoration: none;
-  padding: 5px 10px;
-  margin-right: 10px;
+  font-size: 1.2em;
+}
+
+.highlight {
+  color: #ff0; /* Yellow text for highlight */
+}
+
+.blinking-cursor {
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  from, to {
+      opacity: 1;
+  }
+  50% {
+      opacity: 0;
+  }
+}
+
+/* Switch for dark mode */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: .4s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: .4s;
+  border-radius: 50%;
+}
+
+/* Dark mode toggle */
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+/* Responsive media queries for small screens */
+@media (max-width: 768px) {
+  header {
+      flex-direction: column; /* Stack the elements vertically */
+      align-items: flex-start;
+  }
+
+  nav ul {
+      flex-direction: column; /* Make nav items stack vertically */
+      align-items: flex-start;
+      width: 100%;
+  }
+
+  nav ul li {
+      margin-bottom: 10px; /* Add some spacing between nav items */
+  }
+
+  nav ul li a {
+      font-size: 1em; /* Adjust the font size for smaller screens */
+  }
+
+  .switch {
+      margin-top: 10px; /* Add spacing above the toggle switch */
+  }
+}
+
+@media (max-width: 480px) {
+  nav ul li a {
+      font-size: 0.9em; /* Further adjust font size on very small screens */
+  }
+
+  .switch {
+      width: 50px;
+      height: 28px;
+  }
+
+  .slider:before {
+      height: 22px;
+      width: 22px;
+  }
 }
 
 nav ul li a:hover {
@@ -180,21 +368,6 @@ footer a:hover {
   text-decoration: underline;
 }
 
-/* Dark Mode Toggle Button */
-.toggle-btn {
-  background-color: #61DAFB;
-  color: #1E1E1E;
-  border: none;
-  padding: 10px 20px;
-  cursor: pointer;
-  border-radius: 5px;
-  font-size: 14px;
-}
-
-.toggle-btn:hover {
-  background-color: #4CAF50;
-  color: white;
-}
 
 /* Light Mode styles */
 body.light-mode {
@@ -238,59 +411,6 @@ body.light-mode .skill-item {
   background-color: #ffffff;
   color: #333333;
   border: #1E1E1E 2px solid;
-}
-/* The switch - the box around the slider */
-.switch {
-  position: relative;
-  display: inline-block;
-  width: 60px;
-  height: 34px;
-}
-
-/* Hide default HTML checkbox */
-.switch input {
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
-
-/* The slider */
-.slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #ccc;
-  -webkit-transition: .4s;
-  transition: .4s;
-}
-
-.slider:before {
-  position: absolute;
-  content: "";
-  height: 26px;
-  width: 26px;
-  left: 4px;
-  bottom: 4px;
-  background-color: white;
-  -webkit-transition: .4s;
-  transition: .4s;
-}
-
-input:checked + .slider {
-  background-color: #2196F3;
-}
-
-input:focus + .slider {
-  box-shadow: 0 0 1px #2196F3;
-}
-
-input:checked + .slider:before {
-  -webkit-transform: translateX(26px);
-  -ms-transform: translateX(26px);
-  transform: translateX(26px);
 }
 
 .blinking-cursor {
